@@ -1,0 +1,21 @@
+{
+    "full_name": "Steven Thomson",
+    "name": "Steve",
+    "current_role": "DPMO Lead",
+    "location": "Whitehaven, UK",
+    "email": "steven.thomson@ukpower.com",
+    "linkedin": "linkedin.com/in/yourprofile",
+    "specialties": [
+        "DPMO",
+        "Planning and Delivery",
+        "Project Management"
+    ],
+    "years_experience": 25,
+    "education": [
+        {
+            "degree": "MSc Project Management",
+            "institution": "University of Strathclyde",
+            "year": "2020"
+        }
+    ]
+}
