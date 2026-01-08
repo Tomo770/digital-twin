@@ -14,8 +14,14 @@ echo "📦 Building Lambda package..."
 # 2. Terraform workspace & apply
 cd terraform
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-AWS_REGION=${DEFAULT_AWS_REGION:-us-east-1}
-terraform init -input=false \
+# Determine AWS Region: Env var -> Config -> Default
+if [ -z "$DEFAULT_AWS_REGION" ]; then
+    AWS_REGION=$(aws configure get region 2>/dev/null)
+    AWS_REGION=${AWS_REGION:-us-east-1}
+else
+    AWS_REGION=$DEFAULT_AWS_REGION
+fi
+terraform init -input=false -reconfigure \
   -backend-config="bucket=twin-terraform-state-${AWS_ACCOUNT_ID}" \
   -backend-config="key=${ENVIRONMENT}/terraform.tfstate" \
   -backend-config="region=${AWS_REGION}" \
